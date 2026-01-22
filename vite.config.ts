@@ -5,8 +5,8 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
-      base: '/fucktheweb.com.au/',
-      build: { outDir: 'docs' },
+      base: '/',
+      build: { outDir: 'dist' },
       server: {
         port: 3000,
         host: '0.0.0.0',
