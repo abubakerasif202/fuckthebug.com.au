@@ -1,0 +1,55 @@
+name: Build and commit docs on push
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build production (Vite -> docs/)
+        run: npm run build
+
+      - name: Verify docs/ exists
+        run: |
+          if [ ! -d docs ]; then
+            echo "docs/ not found. Build may have failed."
+            ls -la
+            exit 1
+          fi
+
+      - name: Commit and push docs (if changed)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs
+          if git diff --cached --quiet; then
+            echo "No changes to docs/ — nothing to commit"
+            exit 0
+          fi
+          git commit -m "chore: build docs (automated)"
+          git push origin HEAD:main
