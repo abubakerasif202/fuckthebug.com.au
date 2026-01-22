@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 import Navbar from './components/Navbar';
 
@@ -65,6 +66,7 @@ const App: React.FC = () => {
       <div className="relative z-10">
         <Footer />
       </div>
+      <SpeedInsights />
     </div>
   );
 };
