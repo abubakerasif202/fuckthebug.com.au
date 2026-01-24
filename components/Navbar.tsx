@@ -1,7 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onLoginClick: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onLoginClick }) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -31,10 +35,18 @@ const Navbar: React.FC = () => {
           </a>
         </div>
 
-        <a href="#contact" className="text-[10px] font-bold px-6 py-2.5 border border-white/20 text-white rounded-none hover:bg-neonCyan hover:border-neonCyan hover:text-black transition-all duration-300 font-orbitron uppercase tracking-wider relative overflow-hidden group">
-          <span className="relative z-10">Direct Uplink</span>
-          <div className="absolute inset-0 bg-white/10 transform -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-        </a>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={onLoginClick}
+            className="text-[10px] font-bold px-6 py-2.5 border border-neonCyan text-neonCyan rounded-none hover:bg-neonCyan hover:text-black transition-all duration-300 font-orbitron uppercase tracking-wider"
+          >
+            Login
+          </button>
+          <a href="#contact" className="text-[10px] font-bold px-6 py-2.5 border border-white/20 text-white rounded-none hover:bg-neonCyan hover:border-neonCyan hover:text-black transition-all duration-300 font-orbitron uppercase tracking-wider relative overflow-hidden group">
+            <span className="relative z-10">Direct Uplink</span>
+            <div className="absolute inset-0 bg-white/10 transform -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+          </a>
+        </div>
       </div>
     </nav>
   );

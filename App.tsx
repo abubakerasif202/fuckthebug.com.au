@@ -1,8 +1,9 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 
 import Navbar from './components/Navbar';
+import Login from './components/Login';
 
 import Hero from './components/Hero';
 
@@ -21,15 +22,13 @@ import About from './components/About';
 
 
 const App: React.FC = () => {
+  const [isLoginOpen, setLoginOpen] = useState(false);
 
   return (
-
     <div className="min-h-screen font-inter selection:bg-neonCyan selection:text-black relative bg-darkBg">
-
       <BugBackground />
-
-      <Navbar />
-
+      <Navbar onLoginClick={() => setLoginOpen(true)} />
+      <Login isOpen={isLoginOpen} onClose={() => setLoginOpen(false)} />
       {/* Added relative and z-10 to ensure main content sits above the interactive canvas */}
 
       <main className="relative z-10 pointer-events-none">
