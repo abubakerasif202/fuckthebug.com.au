@@ -193,10 +193,26 @@ const Hero: React.FC = () => {
             No bugs, no bloat, just pure performance.
           </p>
 
-          <div className="mb-10 inline-block px-4 py-2 border border-neonCyan/30 bg-neonCyan/5 rounded-md opacity-0 animate-fade-in-up" style={{ animationDelay: '500ms' }}>
-            <p className="text-neonCyan font-bold font-orbitron text-sm tracking-wide">
-              SPECIAL DISCOUNT: Small business owners get a website for just $300
-            </p>
+          <div className="mb-12 relative group cursor-default opacity-0 animate-fade-in-up w-fit mx-auto lg:mx-0" style={{ animationDelay: '500ms' }}>
+            <div className="absolute -inset-1 bg-gradient-to-r from-neonCyan via-neonPurple to-neonPink rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+            <div className="relative px-8 py-6 bg-black/90 ring-1 ring-gray-900/5 rounded-xl leading-none flex flex-col items-center lg:items-start space-y-3 border-2 border-neonCyan/50 shadow-[0_0_30px_rgba(0,242,234,0.4)] animate-neon-pulse">
+              <div className="flex items-center gap-3">
+                <span className="text-2xl">🚨</span>
+                <p className="text-neonCyan font-black font-orbitron text-xl md:text-3xl tracking-widest drop-shadow-[0_0_10px_rgba(0,242,234,1)]">
+                   SPECIAL OFFER
+                </p>
+                <span className="text-2xl">🚨</span>
+              </div>
+              <p className="text-white font-bold font-orbitron text-lg md:text-xl tracking-wide">
+                SMALL BUSINESS OWNERS:
+              </p>
+              <div className="flex items-baseline gap-2">
+                <p className="text-gray-400 font-inter text-sm uppercase tracking-widest">Full Website For Just</p>
+                <p className="text-neonPink font-black font-orbitron text-5xl md:text-6xl drop-shadow-[0_0_25px_rgba(230,0,255,1)] animate-pulse">
+                  $300
+                </p>
+              </div>
+            </div>
           </div>
           
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '600ms' }}>
