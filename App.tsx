@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 
 import Hero from './components/Hero';
 
-import Dashboard from './components/Dashboard';
+import Services from './components/Services';
 
 import ValueProposition from './components/ValueProposition';
 
@@ -48,7 +48,7 @@ const App: React.FC = () => {
             <div className="glowing-separator opacity-40"></div>
             </div>
 
-            <Dashboard />
+            <Services />
 
             <div className="max-w-7xl mx-auto px-6">
             <div className="glowing-separator opacity-40"></div>

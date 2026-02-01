@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
         <div className="flex space-x-6 text-[10px] font-orbitron text-gray-400">
           <a href="#" className="hover:text-neonCyan transition-colors">TERMINAL</a>
           <a href="#" className="hover:text-neonCyan transition-colors">AUDITS</a>
-          <a href="#" className="hover:text-neonCyan transition-colors">PRIVACY</a>
+          <a href="/privacy.html" className="hover:text-neonCyan transition-colors">PRIVACY</a>
           <a href="#" className="hover:text-neonCyan transition-colors">NETWORK</a>
         </div>
 

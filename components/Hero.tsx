@@ -181,16 +181,15 @@ const Hero: React.FC = () => {
           
           <h1 className="text-5xl md:text-8xl font-black font-orbitron leading-[1] mb-6 tracking-tight">
             <span className="block opacity-0 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-              ELEVATE YOUR
+              HIGH-OCTANE CODE.
             </span>
-            <span className="block text-neonCyan opacity-0 animate-fade-in-up glitch" data-text="BUSINESS" style={{ animationDelay: '250ms' }}>
-              BUSINESS
+            <span className="block text-neonCyan opacity-0 animate-fade-in-up glitch" data-text="NO AGENCY EGO" style={{ animationDelay: '250ms' }}>
+              NO AGENCY EGO.
             </span>
           </h1>
           
           <p className="text-lg text-gray-400 font-inter max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed opacity-0 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
-            Enterprise-grade digital engineering for local market leaders. 
-            No bugs, no bloat, just pure performance.
+            Direct, professional web development for small businesses and founders. We fix what’s broken, build what’s next, and stay out of your way.
           </p>
 
           <div className="mb-12 relative group cursor-default opacity-0 animate-fade-in-up w-fit mx-auto lg:mx-0" style={{ animationDelay: '500ms' }}>
@@ -217,11 +216,11 @@ const Hero: React.FC = () => {
           
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '600ms' }}>
             <a href="#contact" className="w-full sm:w-auto px-10 py-5 bg-white text-black font-bold font-orbitron tracking-widest hover:bg-neonCyan transition-all shadow-neonCyan/20 text-center uppercase">
-              Book Now
+              Kill the Bugs
             </a>
-            <a href="#services" className="w-full sm:w-auto px-10 py-5 border border-white/20 text-white font-bold font-orbitron tracking-widest hover:bg-white/5 transition-all text-center uppercase">
-              Solutions
-            </a>
+            <span className="text-gray-400 font-inter text-sm md:ml-4">
+              No account managers. You speak directly to the builders.
+            </span>
           </div>
         </div>
 

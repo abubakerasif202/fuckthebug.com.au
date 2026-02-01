@@ -81,8 +81,9 @@ const Contact: React.FC = () => {
               <textarea required name="message" rows={4} className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="I need a new website, mobile app, or security audit..."></textarea>
             </div>
             <button type="submit" className="w-full py-5 bg-white text-black font-black font-orbitron rounded-lg hover:bg-neonCyan transition-all duration-200 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_#00f2ea] hover:-translate-y-1 active:scale-95 active:translate-y-0 active:shadow-none tracking-widest mt-4 transform">
-              SEND REQUEST
+              Deploy the Fix
             </button>
+            <p className="text-center text-gray-500 font-inter text-sm mt-3">Strictly no fluff. Just code that works.</p>
           </form>
         </div>
       </div>

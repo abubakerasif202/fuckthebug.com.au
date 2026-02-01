@@ -28,28 +28,28 @@ const ValueProposition: React.FC = () => {
       <div className="glowing-separator w-full mb-16"></div>
 
       <h3 className="text-2xl md:text-3xl font-black font-orbitron tracking-widest text-white mb-12 uppercase">
-        WE SOLVED THE PROBLEM.
+        THE ANTI-AGENCY PROMISE.
       </h3>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Card 1: Purple (Matches left card in poster) */}
         <div className="glass-panel p-8 rounded-2xl border-neonPurple/40 hover:border-neonPurple transition-all duration-300 group hover:shadow-[0_0_40px_rgba(189,0,255,0.2)]">
-          <h4 className="text-neonPurple text-2xl font-black font-orbitron mb-4">No fluff.</h4>
-          <p className="text-gray-400 font-inter">No unnecessary extras or hidden costs.</p>
+          <h4 className="text-neonPurple text-2xl font-black font-orbitron mb-4">The Bug-Free Guarantee.</h4>
+          <p className="text-gray-400 font-inter">Our name is our mission. We pride ourselves on shipping production-ready code that actually works.</p>
           <div className="mt-8 h-1 w-12 bg-neonPurple mx-auto group-hover:w-full transition-all duration-500 opacity-50"></div>
         </div>
 
         {/* Card 2: Cyan (Matches center card in poster) */}
         <div className="glass-panel p-8 rounded-2xl border-neonCyan/40 hover:border-neonCyan transition-all duration-300 group hover:shadow-[0_0_40px_rgba(0,242,234,0.2)]">
-          <h4 className="text-neonCyan text-2xl font-black font-orbitron mb-4">Fast & modern.</h4>
-          <p className="text-gray-400 font-inter">Clean, high-performance websites built to convert.</p>
+          <h4 className="text-neonCyan text-2xl font-black font-orbitron mb-4">Full-Stack Mastery.</h4>
+          <p className="text-gray-400 font-inter">Whether it’s a high-converting landing page or a complex API, we’ve got the tools to execute.</p>
           <div className="mt-8 h-1 w-12 bg-neonCyan mx-auto group-hover:w-full transition-all duration-500 opacity-50"></div>
         </div>
 
         {/* Card 3: Purple (Matches right card in poster) */}
         <div className="glass-panel p-8 rounded-2xl border-neonPurple/40 hover:border-neonPurple transition-all duration-300 group hover:shadow-[0_0_40px_rgba(189,0,255,0.2)]">
-          <h4 className="text-neonPurple text-2xl font-black font-orbitron mb-4">Pricing that makes sense.</h4>
-          <p className="text-gray-400 font-inter">Affordable solutions for real businesses.</p>
+          <h4 className="text-neonPurple text-2xl font-black font-orbitron mb-4">Direct Pipeline.</h4>
+          <p className="text-gray-400 font-inter">Direct access to your developers, real-time updates, and zero hidden agendas.</p>
           <div className="mt-8 h-1 w-12 bg-neonPurple mx-auto group-hover:w-full transition-all duration-500 opacity-50"></div>
         </div>
       </div>
