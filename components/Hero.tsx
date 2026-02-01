@@ -188,12 +188,18 @@ const Hero: React.FC = () => {
             </span>
           </h1>
           
-          <p className="text-lg text-gray-400 font-inter max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed opacity-0 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
+          <p className="text-lg text-gray-400 font-inter max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed opacity-0 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
             Enterprise-grade digital engineering for local market leaders. 
             No bugs, no bloat, just pure performance.
           </p>
+
+          <div className="mb-10 inline-block px-4 py-2 border border-neonCyan/30 bg-neonCyan/5 rounded-md opacity-0 animate-fade-in-up" style={{ animationDelay: '500ms' }}>
+            <p className="text-neonCyan font-bold font-orbitron text-sm tracking-wide">
+              SPECIAL DISCOUNT: Small business owners get a website for just $300
+            </p>
+          </div>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '550ms' }}>
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '600ms' }}>
             <a href="#contact" className="w-full sm:w-auto px-10 py-5 bg-white text-black font-bold font-orbitron tracking-widest hover:bg-neonCyan transition-all shadow-neonCyan/20 text-center uppercase">
               Book Now
             </a>
