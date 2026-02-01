@@ -45,32 +45,42 @@ const Contact: React.FC = () => {
         </div>
 
         <div className="glass-panel rounded-2xl p-8 md:p-12 relative border-t border-white/10 shadow-2xl">
-          <form className="space-y-6">
+          <form 
+            action="https://formsubmit.co/abubakerasif202@yahoo.com" 
+            method="POST"
+            className="space-y-6"
+          >
+            {/* FormSubmit Configuration */}
+            <input type="hidden" name="_subject" value="New Enquiry from Fuckthebug.com.au" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://fuckthebug.com.au/" />
+            <input type="hidden" name="_template" value="table" />
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2 group">
                 <label className="text-[10px] font-orbitron text-gray-500 uppercase tracking-widest group-focus-within:text-neonCyan transition-colors">Your Name</label>
-                <input type="text" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="John Doe" />
+                <input required name="name" type="text" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="John Doe" />
               </div>
               <div className="space-y-2 group">
                 <label className="text-[10px] font-orbitron text-gray-500 uppercase tracking-widest group-focus-within:text-neonCyan transition-colors">Business Name</label>
-                <input type="text" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="Local Business LLC" />
+                <input name="business" type="text" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="Local Business LLC" />
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                <div className="space-y-2 group">
                 <label className="text-[10px] font-orbitron text-gray-500 uppercase tracking-widest group-focus-within:text-neonCyan transition-colors">Email Address</label>
-                <input type="email" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="name@company.com" />
+                <input required name="email" type="email" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="name@company.com" />
               </div>
                <div className="space-y-2 group">
                 <label className="text-[10px] font-orbitron text-gray-500 uppercase tracking-widest group-focus-within:text-neonCyan transition-colors">Phone Number</label>
-                <input type="tel" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="(555) 123-4567" />
+                <input required name="phone" type="tel" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="(555) 123-4567" />
               </div>
             </div>
             <div className="space-y-2 group">
               <label className="text-[10px] font-orbitron text-gray-500 uppercase tracking-widest group-focus-within:text-neonCyan transition-colors">How can we help?</label>
-              <textarea rows={4} className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="I need a new website, mobile app, or security audit..."></textarea>
+              <textarea required name="message" rows={4} className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="I need a new website, mobile app, or security audit..."></textarea>
             </div>
-            <button className="w-full py-5 bg-white text-black font-black font-orbitron rounded-lg hover:bg-neonCyan transition-all duration-200 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_#00f2ea] hover:-translate-y-1 active:scale-95 active:translate-y-0 active:shadow-none tracking-widest mt-4 transform">
+            <button type="submit" className="w-full py-5 bg-white text-black font-black font-orbitron rounded-lg hover:bg-neonCyan transition-all duration-200 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_#00f2ea] hover:-translate-y-1 active:scale-95 active:translate-y-0 active:shadow-none tracking-widest mt-4 transform">
               SEND REQUEST
             </button>
           </form>
