@@ -125,6 +125,7 @@ const Hero: React.FC = () => {
     const core = new THREE.Mesh(coreGeo, coreMat);
     group.add(core);
 
+    let animationFrameId: number | null = null;
     const animate3D = () => {
       group.rotation.y += 0.0015;
       group.rotation.x += 0.0008;
@@ -135,7 +136,7 @@ const Hero: React.FC = () => {
       group.rotation.y += (targetRotationY - group.rotation.y) * 0.02;
 
       renderer.render(scene, camera);
-      requestAnimationFrame(animate3D);
+      animationFrameId = requestAnimationFrame(animate3D);
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -144,7 +145,7 @@ const Hero: React.FC = () => {
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    const animId = requestAnimationFrame(animate3D);
+    animationFrameId = requestAnimationFrame(animate3D);
 
     const handleResize = () => {
       if (!threeRef.current) return;
@@ -159,7 +160,9 @@ const Hero: React.FC = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animId);
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+      }
       renderer.dispose();
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
