@@ -21,8 +21,8 @@ const Contact: React.FC = () => {
             <div className="space-y-6">
                 <div className="glass-panel p-6 rounded-xl border-l-4 border-neonCyan group hover:bg-neonCyan/5 transition-all">
                     <div className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-1">Encrypted Mail</div>
-                    <a href="mailto:abubakerasif202@yahoo.com" className="text-lg md:text-xl font-orbitron font-bold text-white hover:text-neonCyan transition-colors">
-                        abubakerasif202@yahoo.com
+                    <a href="mailto:info@fuckthebug.com.au" className="text-lg md:text-xl font-orbitron font-bold text-white hover:text-neonCyan transition-colors">
+                        info@fuckthebug.com.au
                     </a>
                 </div>
 
