@@ -6,9 +6,11 @@ const Footer: React.FC = () => {
     <footer className="py-12 border-t border-white/5 px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
         <div className="text-center md:text-left">
-          <h2 className="text-xl font-black font-orbitron tracking-tighter mb-2">
-            FUCKTHE<span className="text-neonCyan">BUG</span>
-          </h2>
+          <a href="/" className="hover:opacity-80 transition-opacity">
+            <h2 className="text-xl font-black font-orbitron tracking-tighter mb-2">
+              FUCKTHE<span className="text-neonCyan">BUG</span>
+            </h2>
+          </a>
           <p className="text-[10px] text-gray-500 font-inter uppercase tracking-widest">© 2025 FUCKTHEBUG.COM.AU PRECISION SYSTEMS. ALL BUGS DESTROYED.</p>
         </div>
         

@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
       scrolled ? 'bg-[#030014]/80 backdrop-blur-xl border-b border-white/5 py-4' : 'bg-transparent py-6'
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="text-xl md:text-2xl font-black font-orbitron tracking-tighter group">
+        <a href="/" className="text-xl md:text-2xl font-black font-orbitron tracking-tighter group">
           FUCKTHE<span className="text-neonCyan group-hover:text-white transition-colors">BUG</span>
           <span className="ml-1 w-2 h-2 rounded-full bg-neonCyan inline-block animate-pulse"></span>
         </a>
