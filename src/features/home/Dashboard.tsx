@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { ServiceInfo } from '../types';
+import { ServiceInfo } from '../../types';
 
 const SERVICES: ServiceInfo[] = [
   {
