@@ -15,16 +15,16 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="flex space-x-6 text-[10px] font-orbitron text-gray-400">
-          <a href="#" className="hover:text-neonCyan transition-colors">TERMINAL</a>
-          <a href="#" className="hover:text-neonCyan transition-colors">AUDITS</a>
+          <a href="#contact" className="hover:text-neonCyan transition-colors">TERMINAL</a>
+          <a href="#services" className="hover:text-neonCyan transition-colors">AUDITS</a>
           <a href="/privacy.html" className="hover:text-neonCyan transition-colors">PRIVACY</a>
-          <a href="#" className="hover:text-neonCyan transition-colors">NETWORK</a>
+          <a href="#about" className="hover:text-neonCyan transition-colors">NETWORK</a>
         </div>
 
         <div className="flex space-x-4">
-            <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-neonCyan cursor-pointer transition-colors text-[10px] font-mono">X</div>
-            <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-neonCyan cursor-pointer transition-colors text-[10px] font-mono">GH</div>
-            <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-neonCyan cursor-pointer transition-colors text-[10px] font-mono">LN</div>
+            <a href="mailto:admin@fuckthebug.com.au" aria-label="Email us" className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-neonCyan transition-colors text-[10px] font-mono">EM</a>
+            <a href="https://github.com/abubakerasif202" target="_blank" rel="noreferrer" aria-label="GitHub" className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-neonCyan transition-colors text-[10px] font-mono">GH</a>
+            <a href="tel:0423332037" aria-label="Call us" className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-neonCyan transition-colors text-[10px] font-mono">PH</a>
         </div>
       </div>
     </footer>

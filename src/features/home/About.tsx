@@ -21,7 +21,7 @@ const About: React.FC = () => {
               We started fuckthebug because we were tired of seeing founders get stuck with bloated, fragile codebases and agencies that hide behind jargon. We don’t just build apps; we fix systems, optimize for speed, and ensure your technology is an asset, not a liability.
             </p>
             <p>
-              You won’t find any "account managers" or "strategy consultants" here. When you work with us, you’re talking directly to the people writing the code. We prioritize clarity over complexity, providing honest technical advice that helps you make better business decisions.
+              You won’t find any &quot;account managers&quot; or &quot;strategy consultants&quot; here. When you work with us, you’re talking directly to the people writing the code. We prioritize clarity over complexity, providing honest technical advice that helps you make better business decisions.
             </p>
           </div>
 

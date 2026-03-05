@@ -5,104 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Privacy Policy | fuckthebug.com.au</title>
     <link rel="canonical" href="https://fuckthebug.com.au/privacy.html" />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        neonCyan: '#00f2ea',
-                        neonPurple: '#bd00ff',
-                        darkBg: '#020010',
-                    },
-                    fontFamily: {
-                        orbitron: ['Orbitron', 'sans-serif'],
-                        inter: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <style>
-        body {
-            background-color: #020010;
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
+        :root {
+            --bg: #020010;
+            --panel: rgba(255, 255, 255, 0.02);
+            --text: #ffffff;
+            --muted: #9ca3af;
+            --border: rgba(255, 255, 255, 0.12);
+            --cyan: #00f2ea;
         }
-        h1, h2, h3 { font-family: 'Orbitron', sans-serif; }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .back-link {
+            color: var(--cyan);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover { color: #fff; }
+
+        h1, h2 {
+            font-family: 'Orbitron', sans-serif;
+            line-height: 1.2;
+            margin: 0 0 12px;
+        }
+
+        h1 { font-size: clamp(2rem, 5vw, 3rem); }
+        h2 { font-size: clamp(1.3rem, 3vw, 1.8rem); color: var(--cyan); margin-top: 24px; }
+
+        p { margin: 0 0 12px; color: #d1d5db; }
+        strong { color: #fff; }
+
+        .muted { color: var(--muted); }
+        .divider { border-top: 1px solid var(--border); margin-top: 28px; padding-top: 20px; }
+
+        ul { margin: 0 0 12px 20px; color: #d1d5db; }
+        li { margin-bottom: 8px; }
+
+        .email {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .email:hover { color: var(--cyan); }
     </style>
 </head>
-<body class="p-8 md:p-16 max-w-4xl mx-auto">
-    <div class="privacy-policy-container space-y-8">
-        <header class="mb-12 border-b border-white/10 pb-8">
-             <a href="/" class="text-neonCyan hover:text-white transition-colors mb-4 inline-block font-mono text-sm">&larr; Return to Base</a>
-             <h1 class="text-4xl md:text-5xl font-black text-white mb-2">Privacy Policy</h1>
-             <p class="text-gray-400">Last updated: February 2, 2026</p>
-        </header>
+<body>
+    <main class="container">
+        <article class="panel">
+            <header>
+                <a href="/" class="back-link">&larr; Return to Base</a>
+                <h1>Privacy Policy</h1>
+                <p class="muted">Last updated: February 2, 2026</p>
+            </header>
 
-        <section class="space-y-4">
-            <h2 class="text-2xl font-bold text-neonCyan">1. Overview</h2>
-            <p class="text-gray-300 leading-relaxed">
-                At <strong>fuckthebug.com.au</strong> ("we", "us", "our"), we respect your privacy. 
-                This policy explains how we handle your personal information in accordance with the 
-                Australian Privacy Principles (APPs) and, where applicable, the GDPR.
-            </p>
-        </section>
+            <section>
+                <h2>1. Overview</h2>
+                <p>At <strong>fuckthebug.com.au</strong> ("we", "us", "our"), we respect your privacy. This policy explains how we handle your personal information in accordance with the Australian Privacy Principles (APPs) and, where applicable, the GDPR.</p>
+            </section>
 
-        <section class="space-y-4">
-            <h2 class="text-2xl font-bold text-neonCyan">2. What We Collect</h2>
-            <p class="text-gray-300">We collect minimal information necessary to provide our services:</p>
-            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
-                <li><strong>Contact Information:</strong> Name, email, phone number, and business details you provide via our contact forms.</li>
-                <li><strong>Technical Data:</strong> IP address, browser type, and usage data via standard analytics tools to help us improve site performance.</li>
-            </ul>
-        </section>
+            <section>
+                <h2>2. What We Collect</h2>
+                <p>We collect minimal information necessary to provide our services:</p>
+                <ul>
+                    <li><strong>Contact Information:</strong> Name, email, phone number, and business details you provide via our contact forms.</li>
+                    <li><strong>Technical Data:</strong> IP address, browser type, and usage data via standard analytics tools to help us improve site performance.</li>
+                </ul>
+            </section>
 
-        <section class="space-y-4">
-            <h2 class="text-2xl font-bold text-neonCyan">3. How We Use Your Data</h2>
-            <p class="text-gray-300">We use your data solely for:</p>
-            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
-                <li>Responding to your enquiries and support requests.</li>
-                <li>Delivering the web development and technical services you requested.</li>
-                <li>Improving our website's speed and user experience.</li>
-            </ul>
-            <p class="text-white font-semibold mt-4">We do not sell, trade, or rent your personal identification information to others.</p>
-        </section>
+            <section>
+                <h2>3. How We Use Your Data</h2>
+                <p>We use your data solely for:</p>
+                <ul>
+                    <li>Responding to your enquiries and support requests.</li>
+                    <li>Delivering the web development and technical services you requested.</li>
+                    <li>Improving our website's speed and user experience.</li>
+                </ul>
+                <p><strong>We do not sell, trade, or rent your personal identification information to others.</strong></p>
+            </section>
 
-        <section class="space-y-4">
-            <h2 class="text-2xl font-bold text-neonCyan">4. Cookies & Analytics</h2>
-            <p class="text-gray-300 leading-relaxed">
-                We use cookies to understand how visitors interact with our website. You can choose to disable cookies 
-                through your browser settings, though this may affect some site functionality.
-            </p>
-        </section>
+            <section>
+                <h2>4. Cookies &amp; Analytics</h2>
+                <p>We use cookies to understand how visitors interact with our website. You can choose to disable cookies through your browser settings, though this may affect some site functionality.</p>
+            </section>
 
-        <section class="space-y-4">
-            <h2 class="text-2xl font-bold text-neonCyan">5. Data Security</h2>
-            <p class="text-gray-300 leading-relaxed">
-                We implement standard security measures to protect your personal information. However, no method of transmission 
-                over the Internet is 100% secure. While we strive to protect your data, we cannot guarantee its absolute security.
-            </p>
-        </section>
+            <section>
+                <h2>5. Data Security</h2>
+                <p>We implement standard security measures to protect your personal information. However, no method of transmission over the Internet is 100% secure. While we strive to protect your data, we cannot guarantee its absolute security.</p>
+            </section>
 
-        <section class="space-y-4">
-            <h2 class="text-2xl font-bold text-neonCyan">6. Your Rights</h2>
-            <p class="text-gray-300">You have the right to:</p>
-            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
-                <li>Access the personal information we hold about you.</li>
-                <li>Request corrections to your data.</li>
-                <li>Request deletion of your data (subject to legal retention requirements).</li>
-            </ul>
-        </section>
+            <section>
+                <h2>6. Your Rights</h2>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Access the personal information we hold about you.</li>
+                    <li>Request corrections to your data.</li>
+                    <li>Request deletion of your data (subject to legal retention requirements).</li>
+                </ul>
+            </section>
 
-        <section class="space-y-4 pt-8 border-t border-white/10">
-            <h2 class="text-2xl font-bold text-neonCyan">7. Contact Us</h2>
-            <p class="text-gray-300">
-                If you have any questions about this policy, please contact us at: <br>
-                <a href="mailto:admin@fuckthebug.com.au" class="text-white hover:text-neonCyan transition-colors">admin@fuckthebug.com.au</a>
-            </p>
-        </section>
-    </div>
+            <section class="divider">
+                <h2>7. Contact Us</h2>
+                <p>If you have any questions about this policy, please contact us at <a class="email" href="mailto:admin@fuckthebug.com.au">admin@fuckthebug.com.au</a>.</p>
+            </section>
+        </article>
+    </main>
 </body>
 </html>

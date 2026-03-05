@@ -14,7 +14,7 @@ const Contact: React.FC = () => {
                 <span className="text-neonCyan font-mono text-[10px] tracking-[0.4em] uppercase mb-2 block">Direct Transmission</span>
                 <h3 className="text-4xl md:text-5xl font-black font-orbitron text-white leading-none mb-6">ESTABLISH <span className="text-neonCyan">UPLINK</span></h3>
                 <p className="text-gray-400 font-inter text-lg leading-relaxed max-w-md">
-                    Skip the queue and contact our primary node directly. We're ready to debug your infrastructure.
+                    Skip the queue and contact our primary node directly. We&apos;re ready to debug your infrastructure.
                 </p>
             </div>
 
@@ -58,27 +58,27 @@ const Contact: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2 group">
-                <label className="text-[10px] font-orbitron text-gray-500 uppercase tracking-widest group-focus-within:text-neonCyan transition-colors">Your Name</label>
-                <input required name="name" type="text" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="John Doe" />
+                <label htmlFor="contact-name" className="text-[10px] font-orbitron text-gray-500 uppercase tracking-widest group-focus-within:text-neonCyan transition-colors">Your Name</label>
+                <input id="contact-name" required name="name" type="text" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="John Doe" />
               </div>
               <div className="space-y-2 group">
-                <label className="text-[10px] font-orbitron text-gray-500 uppercase tracking-widest group-focus-within:text-neonCyan transition-colors">Business Name</label>
-                <input name="business" type="text" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="Local Business LLC" />
+                <label htmlFor="contact-business" className="text-[10px] font-orbitron text-gray-500 uppercase tracking-widest group-focus-within:text-neonCyan transition-colors">Business Name</label>
+                <input id="contact-business" name="business" type="text" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="Local Business LLC" />
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                <div className="space-y-2 group">
-                <label className="text-[10px] font-orbitron text-gray-500 uppercase tracking-widest group-focus-within:text-neonCyan transition-colors">Email Address</label>
-                <input required name="email" type="email" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="name@company.com" />
+                <label htmlFor="contact-email" className="text-[10px] font-orbitron text-gray-500 uppercase tracking-widest group-focus-within:text-neonCyan transition-colors">Email Address</label>
+                <input id="contact-email" required name="email" type="email" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="name@company.com" />
               </div>
                <div className="space-y-2 group">
-                <label className="text-[10px] font-orbitron text-gray-500 uppercase tracking-widest group-focus-within:text-neonCyan transition-colors">Phone Number</label>
-                <input required name="phone" type="tel" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="(555) 123-4567" />
+                <label htmlFor="contact-phone" className="text-[10px] font-orbitron text-gray-500 uppercase tracking-widest group-focus-within:text-neonCyan transition-colors">Phone Number</label>
+                <input id="contact-phone" required name="phone" type="tel" className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="(555) 123-4567" />
               </div>
             </div>
             <div className="space-y-2 group">
-              <label className="text-[10px] font-orbitron text-gray-500 uppercase tracking-widest group-focus-within:text-neonCyan transition-colors">How can we help?</label>
-              <textarea required name="message" rows={4} className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="I need a new website, mobile app, or security audit..."></textarea>
+              <label htmlFor="contact-message" className="text-[10px] font-orbitron text-gray-500 uppercase tracking-widest group-focus-within:text-neonCyan transition-colors">How can we help?</label>
+              <textarea id="contact-message" required name="message" rows={4} className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-4 focus:outline-none focus:border-neonCyan focus:bg-white/5 transition-all text-white font-inter" placeholder="I need a new website, mobile app, or security audit..."></textarea>
             </div>
             <button type="submit" className="w-full py-5 bg-white text-black font-black font-orbitron rounded-lg hover:bg-neonCyan transition-all duration-200 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_#00f2ea] hover:-translate-y-1 active:scale-95 active:translate-y-0 active:shadow-none tracking-widest mt-4 transform">
               Deploy the Fix
