@@ -21,8 +21,8 @@ const Contact: React.FC = () => {
             <div className="space-y-6">
                 <div className="glass-panel p-6 rounded-xl border-l-4 border-neonCyan group hover:bg-neonCyan/5 transition-all">
                     <div className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-1">Encrypted Mail</div>
-                    <a href="mailto:abubakerasif202@yahoo.com" className="text-lg md:text-xl font-orbitron font-bold text-white hover:text-neonCyan transition-colors">
-                        abubakerasif202@yahoo.com
+                    <a href="mailto:admin@fuckthebug.com.au" className="text-lg md:text-xl font-orbitron font-bold text-white hover:text-neonCyan transition-colors">
+                        admin@fuckthebug.com.au
                     </a>
                 </div>
 
@@ -46,7 +46,7 @@ const Contact: React.FC = () => {
 
         <div className="glass-panel rounded-2xl p-8 md:p-12 relative border-t border-white/10 shadow-2xl">
           <form 
-            action="https://formsubmit.co/abubakerasif202@yahoo.com" 
+            action="https://formsubmit.co/admin@fuckthebug.com.au" 
             method="POST"
             className="space-y-6"
           >
