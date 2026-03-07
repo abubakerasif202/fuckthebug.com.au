@@ -14,41 +14,61 @@ concurrency:
   cancel-in-progress: true
 
 env:
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
   deploy-preview:
-    if: ${{ secrets.VERCEL_TOKEN != '' }}
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check deploy secrets
+        id: deploy-secrets
+        shell: bash
+        run: |
+          if [ -n "$VERCEL_TOKEN" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::Skipping Vercel preview deploy because VERCEL_TOKEN is not configured."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Checkout
+        if: steps.deploy-secrets.outputs.ready == 'true'
         uses: actions/checkout@v4
 
       - name: Setup Node.js
+        if: steps.deploy-secrets.outputs.ready == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
 
       - name: Install dependencies
+        if: steps.deploy-secrets.outputs.ready == 'true'
         run: npm ci
 
       - name: Lint
+        if: steps.deploy-secrets.outputs.ready == 'true'
         run: npm run lint
 
       - name: Test
+        if: steps.deploy-secrets.outputs.ready == 'true'
         run: npm run test
 
       - name: Install Vercel CLI
+        if: steps.deploy-secrets.outputs.ready == 'true'
         run: npm install --global vercel@latest
 
       - name: Pull Vercel environment information
-        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        if: steps.deploy-secrets.outputs.ready == 'true'
+        run: vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
 
       - name: Build project artifacts
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+        if: steps.deploy-secrets.outputs.ready == 'true'
+        run: vercel build --token=$VERCEL_TOKEN
 
       - name: Deploy project artifacts to Vercel
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+        if: steps.deploy-secrets.outputs.ready == 'true'
+        run: vercel deploy --prebuilt --token=$VERCEL_TOKEN
