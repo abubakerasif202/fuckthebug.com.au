@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import * as THREE from 'three';
-import { ServiceInfo } from '../../types';
+import type { ServiceInfo } from '../../types';
 
 const SERVICES: ServiceInfo[] = [
   {
@@ -67,56 +66,21 @@ const Service3DVisual: React.FC<{ serviceId: string }> = ({ serviceId }) => {
 
   useEffect(() => {
     if (!mountRef.current) return;
-    const container = mountRef.current;
-    const scene = new THREE.Scene();
-    const width = container.clientWidth;
-    const height = container.clientHeight;
-    const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
-    camera.position.z = 5;
+    let disposed = false;
+    let cleanup: (() => void) | undefined;
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    container.appendChild(renderer.domElement);
+    void (async () => {
+      const { mountServiceVisual } = await import('./three/mountServiceVisual');
+      if (disposed || !mountRef.current) {
+        return;
+      }
 
-    const group = new THREE.Group();
-    scene.add(group);
-
-    // Simple geometric shapes based on service
-    let geometry;
-    let color = 0x00f0ff;
-    
-    if (serviceId === 'web') geometry = new THREE.IcosahedronGeometry(1.5, 1);
-    else if (serviceId === 'mobile') { geometry = new THREE.BoxGeometry(1.2, 2.2, 0.2); color = 0xff00ff; }
-    else if (serviceId === 'cloud') { geometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16); color = 0xa855ff; }
-    else { geometry = new THREE.OctahedronGeometry(1.5, 0); color = 0xff00ff; }
-
-    const material = new THREE.MeshBasicMaterial({ color, wireframe: true, transparent: true, opacity: 0.4 });
-    const mesh = new THREE.Mesh(geometry, material);
-    group.add(mesh);
-
-    let animationId: number;
-    const animate = () => {
-        animationId = requestAnimationFrame(animate);
-        group.rotation.y += 0.01;
-        group.rotation.x += 0.005;
-        renderer.render(scene, camera);
-    };
-    animate();
-
-    const handleResize = () => {
-      if (!container) return;
-      camera.aspect = container.clientWidth / container.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(container.clientWidth, container.clientHeight);
-    };
-    window.addEventListener('resize', handleResize);
+      cleanup = mountServiceVisual(mountRef.current, serviceId);
+    })();
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationId);
-      renderer.dispose();
-      if (container.contains(renderer.domElement)) container.removeChild(renderer.domElement);
+      disposed = true;
+      cleanup?.();
     };
   }, [serviceId]);
 

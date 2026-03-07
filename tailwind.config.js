@@ -17,10 +17,14 @@ export default {
         inter: ['Inter', 'sans-serif'],
         mono: ['Space Mono', 'monospace'],
       },
+      boxShadow: {
+        neonPurple: '0 0 12px rgba(189, 0, 255, 0.65)',
+      },
       animation: {
         'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
         'border-pulse': 'borderPulse 2s infinite',
         'neon-pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
         fadeInUp: {

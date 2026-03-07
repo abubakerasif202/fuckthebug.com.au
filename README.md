@@ -1,15 +1,22 @@
+# fuckthebug.com.au
 
+Marketing site for `https://fuckthebug.com.au/`, built with Vite, React, TypeScript, and Tailwind CSS.
 
----
+## Scripts
 
-### Troubleshooting & tips
+- `npm run dev` starts the local development server on port `3000`.
+- `npm run build` creates the production bundle in `dist/`.
+- `npm run preview` serves the production bundle locally.
+- `npm run lint` runs ESLint across `src/`.
+- `npm run test` runs the Vitest suite.
 
-* **404 / missing assets after Pages publish:**
-  * Confirm `vite.config.ts` has `base: '/fuckthebug.com.au/'` (trailing slash is required).
-  * Confirm `dist/` exists on the `main` branch (view files on GitHub).
-  * Ensure `npm run build` completed without errors in the workflow logs.
+## Deployment Notes
 
-* **To force a rebuild locally and push the result:**
-  * Run `npm run build`, commit `dist/`, and push.
+`vite.config.ts` is currently set to `base: '/'`, which is correct for the live root-domain deployment at `https://fuckthebug.com.au/`.
 
-* **To switch to deploying via `gh-pages` branch instead of committing `docs/` to `main`,** consider using `peaceiris/actions-gh-pages` or `gh-pages` package. I can provide a workflow for that if desired.
+If you deploy this project under a repository subpath instead of the root domain, update `base` to that subpath before building. Example: `'/repo-name/'`.
+
+## Troubleshooting
+
+- If assets 404 after deploy, verify the built files in `dist/` were generated from the intended `base` setting.
+- If the site feels heavy on first load, run `npm run build` and inspect the bundle output before shipping.

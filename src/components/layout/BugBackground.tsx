@@ -50,7 +50,13 @@ const BugBackground: React.FC = () => {
 
     initBugs();
 
+    let animId: number | null = null;
+    let disposed = false;
     const animate = () => {
+      if (disposed) {
+        return;
+      }
+
       ctx.clearRect(0, 0, width, height);
 
       // --- Background Glitch Effects ---
@@ -130,10 +136,10 @@ const BugBackground: React.FC = () => {
         }
       }
 
-      requestAnimationFrame(animate);
+      animId = requestAnimationFrame(animate);
     };
 
-    const animId = requestAnimationFrame(animate);
+    animId = requestAnimationFrame(animate);
 
     const handleResize = () => {
       width = canvas.width = window.innerWidth;
@@ -156,9 +162,12 @@ const BugBackground: React.FC = () => {
     window.addEventListener('mousedown', handleClick);
 
     return () => {
+      disposed = true;
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousedown', handleClick);
-      cancelAnimationFrame(animId);
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+      }
     };
   }, []);
 

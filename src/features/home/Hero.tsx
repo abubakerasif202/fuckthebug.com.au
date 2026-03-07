@@ -1,11 +1,9 @@
 
 import React, { useEffect, useRef } from 'react';
-import * as THREE from 'three';
 
 const Hero: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const threeRef = useRef<HTMLDivElement>(null);
-  const mousePos = useRef({ x: 0, y: 0 });
 
   // 2D Particle Background - Extremely Lightweight
   useEffect(() => {
@@ -48,7 +46,13 @@ const Hero: React.FC = () => {
 
     initParticles();
 
+    let animationId: number | null = null;
+    let disposed = false;
     const animate = () => {
+      if (disposed) {
+        return;
+      }
+
       ctx.clearRect(0, 0, width, height);
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
@@ -66,10 +70,10 @@ const Hero: React.FC = () => {
         ctx.globalAlpha = 0.25;
         ctx.fill();
       }
-      requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(animate);
     };
 
-    const animationId = requestAnimationFrame(animate);
+    animationId = requestAnimationFrame(animate);
     const handleResize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
@@ -77,8 +81,11 @@ const Hero: React.FC = () => {
     };
     window.addEventListener('resize', handleResize);
     return () => {
+      disposed = true;
       window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationId);
+      if (animationId !== null) {
+        cancelAnimationFrame(animationId);
+      }
     };
   }, []);
 
@@ -87,86 +94,21 @@ const Hero: React.FC = () => {
     const isMobile = window.innerWidth < 768;
     if (!threeRef.current || isMobile) return;
 
-    const container = threeRef.current;
-    const width = container.clientWidth;
-    const height = container.clientHeight;
+    let disposed = false;
+    let cleanup: (() => void) | undefined;
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-    camera.position.z = 4;
+    void (async () => {
+      const { mountHeroVisual } = await import('./three/mountHeroVisual');
+      if (disposed || !threeRef.current) {
+        return;
+      }
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(1);
-    container.appendChild(renderer.domElement);
-
-    const group = new THREE.Group();
-    scene.add(group);
-
-    // Wireframe Globe Shell
-    const shellGeo = new THREE.IcosahedronGeometry(1.8, 2);
-    const shellMat = new THREE.MeshBasicMaterial({ 
-      color: 0xbd00ff, // Vibrant Purple from poster
-      wireframe: true,
-      transparent: true,
-      opacity: 0.2
-    });
-    const shell = new THREE.Mesh(shellGeo, shellMat);
-    group.add(shell);
-
-    // Inner core for depth
-    const coreGeo = new THREE.IcosahedronGeometry(1.7, 1);
-    const coreMat = new THREE.MeshBasicMaterial({ 
-      color: 0x00f2ea, // Cyan core
-      wireframe: true,
-      transparent: true,
-      opacity: 0.1
-    });
-    const core = new THREE.Mesh(coreGeo, coreMat);
-    group.add(core);
-
-    let animationFrameId: number | null = null;
-    const animate3D = () => {
-      group.rotation.y += 0.0015;
-      group.rotation.x += 0.0008;
-      
-      const targetRotationX = mousePos.current.y * 0.1;
-      const targetRotationY = mousePos.current.x * 0.1;
-      group.rotation.x += (targetRotationX - group.rotation.x) * 0.02;
-      group.rotation.y += (targetRotationY - group.rotation.y) * 0.02;
-
-      renderer.render(scene, camera);
-      animationFrameId = requestAnimationFrame(animate3D);
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      mousePos.current.x = (e.clientX / window.innerWidth) * 2 - 1;
-      mousePos.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    animationFrameId = requestAnimationFrame(animate3D);
-
-    const handleResize = () => {
-      if (!threeRef.current) return;
-      const w = threeRef.current.clientWidth;
-      const h = threeRef.current.clientHeight;
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-      renderer.setSize(w, h);
-    };
-    window.addEventListener('resize', handleResize);
+      cleanup = mountHeroVisual(threeRef.current);
+    })();
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('resize', handleResize);
-      if (animationFrameId !== null) {
-        cancelAnimationFrame(animationFrameId);
-      }
-      renderer.dispose();
-      if (container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement);
-      }
+      disposed = true;
+      cleanup?.();
     };
   }, []);
 
