@@ -19,7 +19,7 @@ export function mountServiceVisual(container: HTMLDivElement, serviceId: string)
   const camera = new PerspectiveCamera(50, width / height, 0.1, 100);
   camera.position.z = 5;
 
-  const renderer = new WebGLRenderer({ alpha: true, antialias: true });
+  const renderer = new WebGLRenderer({ alpha: true, antialias: false });
   renderer.setSize(width, height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   container.appendChild(renderer.domElement);

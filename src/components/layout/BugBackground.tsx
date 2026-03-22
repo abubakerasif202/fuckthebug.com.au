@@ -52,8 +52,15 @@ const BugBackground: React.FC = () => {
 
     let animId: number | null = null;
     let disposed = false;
+    let visible = true;
+
     const animate = () => {
       if (disposed) {
+        return;
+      }
+
+      if (!visible) {
+        animId = requestAnimationFrame(animate);
         return;
       }
 
@@ -141,10 +148,24 @@ const BugBackground: React.FC = () => {
 
     animId = requestAnimationFrame(animate);
 
+    const observer = new IntersectionObserver(
+      ([entry]) => { visible = entry.isIntersecting; },
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
+
     const handleResize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-      initBugs();
+      const newWidth = window.innerWidth;
+      const newHeight = window.innerHeight;
+      // Rescale existing bug positions proportionally instead of reinitializing
+      const scaleX = newWidth / width;
+      const scaleY = newHeight / height;
+      for (let i = 0; i < bugs.length; i++) {
+        bugs[i].x *= scaleX;
+        bugs[i].y *= scaleY;
+      }
+      width = canvas.width = newWidth;
+      height = canvas.height = newHeight;
     };
 
     const handleClick = (e: MouseEvent) => {
@@ -158,11 +179,12 @@ const BugBackground: React.FC = () => {
         }
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
     window.addEventListener('mousedown', handleClick);
 
     return () => {
       disposed = true;
+      observer.disconnect();
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousedown', handleClick);
       if (animId !== null) {

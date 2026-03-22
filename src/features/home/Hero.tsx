@@ -48,40 +48,62 @@ const Hero: React.FC = () => {
 
     let animationId: number | null = null;
     let disposed = false;
+    let visible = true;
+
     const animate = () => {
       if (disposed) {
         return;
       }
 
-      ctx.clearRect(0, 0, width, height);
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        
-        if (p.x < 0) p.x = width;
-        else if (p.x > width) p.x = 0;
-        if (p.y < 0) p.y = height;
-        else if (p.y > height) p.y = 0;
-        
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.globalAlpha = 0.25;
-        ctx.fill();
+      if (visible) {
+        ctx.clearRect(0, 0, width, height);
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          
+          if (p.x < 0) p.x = width;
+          else if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          else if (p.y > height) p.y = 0;
+          
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = 0.25;
+          ctx.fill();
+        }
       }
+
       animationId = requestAnimationFrame(animate);
     };
 
     animationId = requestAnimationFrame(animate);
+
+    const section = canvas.closest('section') ?? canvas.parentElement;
+    const observer = new IntersectionObserver(
+      ([entry]) => { visible = entry.isIntersecting; },
+      { threshold: 0 }
+    );
+    if (section) observer.observe(section);
+
     const handleResize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-      initParticles();
+      const newWidth = window.innerWidth;
+      const newHeight = window.innerHeight;
+      // Rescale existing particle positions proportionally instead of reinitializing
+      const scaleX = newWidth / width;
+      const scaleY = newHeight / height;
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].x *= scaleX;
+        particles[i].y *= scaleY;
+      }
+      width = canvas.width = newWidth;
+      height = canvas.height = newHeight;
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
     return () => {
       disposed = true;
+      observer.disconnect();
       window.removeEventListener('resize', handleResize);
       if (animationId !== null) {
         cancelAnimationFrame(animationId);

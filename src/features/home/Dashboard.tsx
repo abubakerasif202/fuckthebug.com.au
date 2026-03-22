@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import type { ServiceInfo } from '../../types';
 
 const SERVICES: ServiceInfo[] = [
@@ -89,7 +89,10 @@ const Service3DVisual: React.FC<{ serviceId: string }> = ({ serviceId }) => {
 
 const Dashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('web');
-  const activeService = SERVICES.find(s => s.id === activeTab) || SERVICES[0];
+  const activeService = useMemo(
+    () => SERVICES.find(s => s.id === activeTab) ?? SERVICES[0],
+    [activeTab]
+  );
 
   return (
     <section id="services" className="py-24 px-6 max-w-7xl mx-auto relative">
