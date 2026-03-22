@@ -18,7 +18,12 @@ export function mountHeroVisual(container: HTMLDivElement) {
   const camera = new PerspectiveCamera(75, width / height, 0.1, 1000);
   camera.position.z = 4;
 
-  const renderer = new WebGLRenderer({ alpha: true, antialias: false });
+  let renderer: WebGLRenderer;
+  try {
+    renderer = new WebGLRenderer({ alpha: true, antialias: false });
+  } catch {
+    return () => { /* WebGL unavailable — nothing to clean up */ };
+  }
   renderer.setSize(width, height);
   renderer.setPixelRatio(1);
   container.appendChild(renderer.domElement);

@@ -1,33 +1,40 @@
 
 import React from 'react';
+import type { ServiceInfo } from '../../types';
 
-const SERVICES = [
+const SERVICES: ServiceInfo[] = [
   {
+    id: 'custom-web',
     title: 'Custom Web Development',
     desc: 'We build scalable, high-performance web applications using modern stacks designed for speed and long-term stability.',
     icon: '⚡'
   },
   {
+    id: 'technical-rescue',
     title: 'Technical Rescue & Debugging',
     desc: 'We audit broken codebases, crush critical bugs, and eliminate technical debt to restore your system\'s integrity.',
     icon: '🛠️'
   },
   {
+    id: 'performance',
     title: 'Performance Optimization',
     desc: 'We refactor slow applications to ensure lightning-fast load times and perfect Core Web Vitals.',
     icon: '🚀'
   },
   {
+    id: 'deployment',
     title: 'Managed Deployment',
     desc: 'Seamless CI/CD pipeline setup and infrastructure management across Vercel, Netlify, and AWS.',
     icon: '☁️'
   },
   {
+    id: 'automation',
     title: 'Workflow Automation',
     desc: 'Custom scripts and automation tools designed to eliminate manual overhead and streamline your business operations.',
     icon: '🤖'
   },
   {
+    id: 'ai-integration',
     title: 'AI & API Integration',
     desc: 'Connecting your platform to LLMs and third-party services to add intelligence and extended functionality.',
     icon: '🧠'
@@ -45,9 +52,9 @@ const Services: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {SERVICES.map((service, index) => (
+        {SERVICES.map((service) => (
           <div 
-            key={index}
+            key={service.id}
             className="group relative p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-neonCyan/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,242,234,0.1)] hover:-translate-y-1"
           >
             <div className="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(0,242,234,0.4)]">

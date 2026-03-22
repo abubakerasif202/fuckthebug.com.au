@@ -73,6 +73,7 @@ const BugBackground: React.FC = () => {
         const x = Math.random() > 0.5 ? 0 : Math.random() * (width - w);
         
         ctx.fillRect(x, y, w, h);
+        ctx.globalAlpha = 1;
       }
 
       // Occasional blocky artifact
@@ -86,6 +87,7 @@ const BugBackground: React.FC = () => {
         const x = Math.random() * width;
         const y = Math.random() * height;
         ctx.fillRect(x, y, w, h);
+        ctx.globalAlpha = 1;
       }
       // --------------------------------
 
@@ -134,6 +136,7 @@ const BugBackground: React.FC = () => {
             ctx.fillStyle = '#ffffff';
             ctx.fillRect(bug.x + (Math.random() - 0.5) * 10, bug.y, bug.size * 2, 1);
         }
+        ctx.globalAlpha = 1;
       }
 
       animId = requestAnimationFrame(animate);

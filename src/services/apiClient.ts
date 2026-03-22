@@ -21,5 +21,9 @@ export async function apiClient(path: string, options: APIRequestOptions = {}) {
     throw new Error(message || 'Network error');
   }
 
-  return response.json();
+  try {
+    return await response.json();
+  } catch {
+    throw new Error('Failed to parse server response as JSON');
+  }
 }

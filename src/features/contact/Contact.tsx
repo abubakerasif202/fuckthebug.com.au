@@ -1,6 +1,9 @@
 
 import React from 'react';
 
+const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL || 'admin@fuckthebug.com.au';
+const CONTACT_REDIRECT = import.meta.env.VITE_CONTACT_REDIRECT || 'https://fuckthebug.com.au/';
+
 const Contact: React.FC = () => {
   return (
     <section id="contact" className="py-24 px-6 relative overflow-hidden">
@@ -46,14 +49,14 @@ const Contact: React.FC = () => {
 
         <div className="glass-panel rounded-2xl p-8 md:p-12 relative border-t border-white/10 shadow-2xl">
           <form 
-            action="https://formsubmit.co/admin@fuckthebug.com.au" 
+            action={`https://formsubmit.co/${CONTACT_EMAIL}`}
             method="POST"
             className="space-y-6"
           >
             {/* FormSubmit Configuration */}
             <input type="hidden" name="_subject" value="New Enquiry from Fuckthebug.com.au" />
             <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="https://fuckthebug.com.au/" />
+            <input type="hidden" name="_next" value={CONTACT_REDIRECT} />
             <input type="hidden" name="_template" value="table" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

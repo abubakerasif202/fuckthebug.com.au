@@ -151,7 +151,7 @@ const Dashboard: React.FC = () => {
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {activeService.features.map((f, i) => (
+              {(activeService.features ?? []).map((f, i) => (
                 <div key={i} className="flex items-center p-4 rounded-lg bg-white/5 border border-white/5 hover:border-neonPurple/30 transition-all">
                   <div className="w-2 h-2 rounded-full bg-neonPurple mr-4 shadow-neonPurple"></div>
                   <span className="text-sm font-mono text-gray-300">{f}</span>
