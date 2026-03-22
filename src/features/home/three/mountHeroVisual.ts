@@ -60,10 +60,19 @@ export function mountHeroVisual(container: HTMLDivElement) {
     animationFrameId = requestAnimationFrame(animate);
   };
 
+  let mouseTicking = false;
   const handleMouseMove = (event: MouseEvent) => {
-    const x = (event.clientX / window.innerWidth) * 2 - 1;
-    const y = -(event.clientY / window.innerHeight) * 2 + 1;
-    mousePosition = { x, y };
+    const clientX = event.clientX;
+    const clientY = event.clientY;
+    if (!mouseTicking) {
+      requestAnimationFrame(() => {
+        const x = (clientX / window.innerWidth) * 2 - 1;
+        const y = -(clientY / window.innerHeight) * 2 + 1;
+        mousePosition = { x, y };
+        mouseTicking = false;
+      });
+      mouseTicking = true;
+    }
   };
 
   const handleResize = () => {
@@ -74,7 +83,7 @@ export function mountHeroVisual(container: HTMLDivElement) {
     renderer.setSize(nextWidth, nextHeight);
   };
 
-  window.addEventListener('mousemove', handleMouseMove);
+  window.addEventListener('mousemove', handleMouseMove, { passive: true });
   window.addEventListener('resize', handleResize);
   animationFrameId = requestAnimationFrame(animate);
 
